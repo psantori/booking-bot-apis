@@ -264,7 +264,7 @@ app.get('/bookings', function (req, res) {
             });
         }
         if (results.length === 0) {
-            res.send({});
+            return res.send([]);
         }
         let documents = results.map((val, index, arr) => {
             return filter(val, function(v, key, o) {
