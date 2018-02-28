@@ -1,0 +1,22 @@
+{
+  "name": "booking-bot-apis",
+  "version": "1.0.0",
+  "description": "APIs powering the booking bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/contactlab/booking-bot-apis.git"
+  },
+  "keywords": [
+    "booking"
+  ],
+  "author": "Contactlab",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/contactlab/booking-bot-apis/issues"
+  },
+  "homepage": "https://github.com/contactlab/booking-bot-apis#readme"
+}
