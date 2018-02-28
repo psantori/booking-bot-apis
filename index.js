@@ -275,6 +275,12 @@ app.get('/bookings', function (req, res) {
     })
 })
 
+app.get('/', function (req, res) {
+    res.send({
+        hello: "world!"
+    })
+})
+
 app.listen(process.env.HOST_PORT, function () {
     console.log('Example app listening on port ' + process.env.HOST_PORT);
 });
