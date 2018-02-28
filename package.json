@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/contactlab/booking-bot-apis/issues"
   },
-  "homepage": "https://github.com/contactlab/booking-bot-apis#readme"
+  "homepage": "https://github.com/contactlab/booking-bot-apis#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "documentdb": "^1.14.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "express-validator": "^5.0.2",
+    "filter-values": "^0.4.1"
+  }
 }
