@@ -38,8 +38,6 @@ function queryDocuments(collLink, querySpec, cb) {
     const options = {};
     client.queryDocuments(collLink, querySpec, options).toArray(function (err, results) {
         if (err) {
-            console.log(err);
-            console.log(JSON.parse(err).message);
             if (new String(err.code).charAt(0) === '4') {
                 cb(err, undefined);
             } else {
@@ -177,8 +175,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
+// Auth middleware
+function authChecker(req, res, next) {
+    if (req.header('X-Auth') && req.header('X-Auth') === process.env.X_AUTH_HEADER) {
+        next();
+    } else {
+        return res.status(401).send('Unauthorized!');
+    }
+}
+
 // Load middleware
 app.use(bodyParser.json());
+app.use(authChecker);
 
 // Validators
 const { check, validationResult } = require('express-validator/check');
