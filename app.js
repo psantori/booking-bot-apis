@@ -15,10 +15,10 @@ function initDb(callback) {
 function createDocument(collLink, documentDefinition, cb) {
     client.createDocument(collLink, documentDefinition, function (err, document) {
         if (err) {
-            console.log(err);
+            cb(err, undefined);
         } else {
             console.log('created ' + document.id);
-            cb(document);
+            cb(undefined, document);
         }
     });
 }
@@ -212,7 +212,12 @@ app.post('/bookings',
       return res.status(422).json({ errors: errors.mapped() });
     }
     const booking = matchedData(req);
-    createDocument(collLink, booking, function (doc) {
+    createDocument(collLink, booking, function (err, doc) {
+        if (err) {
+            return res.status(err.code).send({
+                error: "Unable to save"
+            });
+        }
         const result = filter(doc, function(value, key, obj) {
             return safeBookingFields.indexOf(key) != -1;
         });
@@ -289,7 +294,13 @@ app.get('/', function (req, res) {
     })
 })
 
+app.all('*', function(req, res){
+    res.status(404).send({
+        not: "found"
+    });
+});
+
 app.listen(process.env.PORT, function () {
-    console.log('Example app listening on port ' + process.env.HOST_PORT);
+    console.log('Example app listening on port ' + process.env.PORT);
 });
   
