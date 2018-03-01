@@ -289,7 +289,7 @@ app.get('/', function (req, res) {
     })
 })
 
-app.listen(process.env.HOST_PORT, function () {
+app.listen(process.env.PORT, function () {
     console.log('Example app listening on port ' + process.env.HOST_PORT);
 });
   
